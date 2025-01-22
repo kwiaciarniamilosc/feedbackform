@@ -55,7 +55,7 @@ const FeedbackForm = () => {
       localStorage.setItem('clientFeedback', JSON.stringify(updatedHistory));
   
       setSubmitted(true); // Mark the form as submitted
-    } catch (error) {
+      } catch (error) {
       console.error('Error:', error.message);
       alert('There was an error submitting your feedback. Please try again.');
     }
