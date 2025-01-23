@@ -57,7 +57,7 @@ const FeedbackForm = () => {
       setSubmitted(true); // Mark the form as submitted
       } catch (error) {
       console.error('Error:', error.message);
-      alert('There was an error submitting your feedback. Please try again.');
+      alert('We Kwiaciarnia Milosc Thank you for your Review');
     }
   };
 
