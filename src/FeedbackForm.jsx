@@ -55,9 +55,30 @@ const FeedbackForm = () => {
       localStorage.setItem('clientFeedback', JSON.stringify(updatedHistory));
   
       setSubmitted(true); // Mark the form as submitted
-      } catch (error) {
-      console.error('Error:', error.message);
-      alert('We Kwiaciarnia Milosc Thank you for your Review');
+    } catch (error) {
+      <Card className="w-full max-w-2xl mx-auto">
+        <CardContent className="p-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-green-600 mb-4">Thank You for Your Feedback!</h2>
+            <p className="text-gray-600 mb-6">Your response has been recorded.</p>
+            <button
+              onClick={() => setSubmitted(false)}
+              className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors mr-4"
+            >
+              Submit Another Response
+            </button>
+            <button
+              onClick={downloadCSV}
+              className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors inline-flex items-center"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download All Feedback (CSV)
+            </button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
     }
   };
 
