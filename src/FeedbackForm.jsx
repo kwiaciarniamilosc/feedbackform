@@ -35,7 +35,7 @@ const FeedbackForm = () => {
         'https://script.google.com/macros/s/AKfycbzo_ONk9f3FMvyXElfUUq1BUV9ggu1i9-tJJn5kcm1uF9nOTZP9XF6MQTdVzeDpAyNofg/exec',
         {
           method: 'POST',
-          mode: 'cors',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
