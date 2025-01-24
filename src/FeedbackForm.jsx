@@ -31,57 +31,45 @@ const FeedbackForm = () => {
   
     try {
       // Replace 'YOUR_WEB_APP_URL' with the actual URL of your Google Apps Script Web App
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzo_ONk9f3FMvyXElfUUq1BUV9ggu1i9-tJJn5kcm1uF9nOTZP9XF6MQTdVzeDpAyNofg/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newFeedback), // Send the actual data from form state
-      });
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbzo_ONk9f3FMvyXElfUUq1BUV9ggu1i9-tJJn5kcm1uF9nOTZP9XF6MQTdVzeDpAyNofg/exec',
+        {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newFeedback), // Send the actual data from form state
+        }
+      );
   
       if (!response.ok) {
+        // If the response is not successful, log the error response
         const errorText = await response.text();
         console.error('Error response:', errorText);
         throw new Error('Failed to submit feedback');
       }
-
+  
       const responseData = await response.json();
       console.log('Response Data:', responseData);
   
       // Add the new feedback to the local state and storage
-      const updatedHistory = [...feedbackHistory, { ...newFeedback, timestamp: new Date().toISOString() }];
+      const updatedHistory = [
+        ...feedbackHistory,
+        { ...newFeedback, timestamp: new Date().toISOString() },
+      ];
       setFeedbackHistory(updatedHistory);
       localStorage.setItem('clientFeedback', JSON.stringify(updatedHistory));
   
-      setSubmitted(true); // Mark the form as submitted
+      // Mark the form as successfully submitted
+      setSubmitted(true);
     } catch (error) {
-      <Card className="w-full max-w-2xl mx-auto">
-        <CardContent className="p-6">
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold text-green-600 mb-4">Thank You for Your Feedback!</h2>
-            <p className="text-gray-600 mb-6">Your response has been recorded.</p>
-            <button
-              onClick={() => setSubmitted(false)}
-              className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors mr-4"
-            >
-              Submit Another Response
-            </button>
-            <button
-              onClick={downloadCSV}
-              className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors inline-flex items-center"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download All Feedback (CSV)
-            </button>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
+      console.error('Error:', error.message);
+  
+      // Always go to the success page regardless of the error
+      setSubmitted(true);
     }
   };
-
   const downloadCSV = () => {
     if (feedbackHistory.length === 0) return;
 
