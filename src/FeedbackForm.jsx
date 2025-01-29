@@ -7,7 +7,7 @@ const FeedbackForm = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [feedback, setFeedback] = useState('');
-  const [Name, setName] = useState('');
+  const [name, setName] = useState('');
   const [isHappy, setIsHappy] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [feedbackHistory, setFeedbackHistory] = useState([]);
@@ -23,7 +23,7 @@ const FeedbackForm = () => {
     e.preventDefault();
   
     const newFeedback = {
-      Name,
+      name,
       isHappy,
       rating,
       feedback,
@@ -137,7 +137,7 @@ const FeedbackForm = () => {
             <input
               type="text"
               className="w-full p-2 border rounded-md"
-              value={Name}
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
               placeholder="Wpisz nazwę bukietu"
