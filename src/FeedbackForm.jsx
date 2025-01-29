@@ -137,7 +137,7 @@ const FeedbackForm = () => {
               Nazwa bukietu
             </label>
             <textarea
-              className="w-full p-3 border rounded-md min-h-20"
+              className="w-full p-2 border rounded-md max-h-10 h-10"
               placeholder="Wpisz nazwę bukietu"
               value={name}
               onChange={(e) => setName(e.target.value)}
