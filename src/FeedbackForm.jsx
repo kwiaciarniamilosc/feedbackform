@@ -46,7 +46,7 @@ const FeedbackForm = () => {
 
       // Google Apps Script URL (Replace YOUR_GOOGLE_SCRIPT_ID)
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyLTHURQzeeG57BASm8LcGVtgQjX03RNiGpZ7W48Vg8XM0zcdeDUywJ1O-qvVfBNSDO/exec",
+        "https://script.google.com/macros/s/AKfycbwsZzp3HHF1s0s466F9E_ELdgg70UcLd0aaO34uCChRxaIpB3xHlVFmjbWNX_fCJuhs/exec",
         {
           method: "POST",
           mode: "no-cors",
